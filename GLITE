@@ -9,6 +9,8 @@ if [ "x$1" = "x0" ]; then
      env_var="joboption_env_$env_idx"
   done 
   eval joboption_env_$env_idx="NORDUGRID_ARC_QUEUE=$joboption_queue"
+  # Ensure multicore jobs can use the job scratch dir (see bug 2939)
+  export RUNTIME_ENABLE_MULTICORE_SCRATCH=1
 fi
 
 if [ "x$1" = "x1" ]; then
